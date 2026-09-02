@@ -1,24 +1,46 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { removerToken } from '../../storage/tokenStorage';
-import { styles } from './HomeScreen.styles';
+import { Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { removerToken } from '../../storage/tokenStorage';
+import { COLORS, styles } from './HomeScreen.styles';
+
 export default function HomeScreen({ navigation }: any) {
+
   async function handleLogout() {
     await removerToken();
     navigation.replace('Login');
   }
 
+  function handleCriarHabito() {
+    navigation.navigate('CriarHabito');
+  }
+
   return (
     <LinearGradient
-      colors={['#39E58C', '#151D1B']}
-      start={{ x: 4, y: 0 }}
+      colors={[COLORS.primary, '#151D1B']}
+      start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}
     >
-      <Text style={styles.title}>Olá</Text>
-      <Text style={styles.subtitle}>Meu app</Text>
+
+      <Text style={styles.title}>
+        Olá
+      </Text>
+
+      <Text style={styles.subtitle}>
+        Meu app
+      </Text>
+
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={handleCriarHabito}
+      >
+        <Text style={styles.addButtonText}>
+          +
+        </Text>
+      </TouchableOpacity>
+
     </LinearGradient>
   );
 }
