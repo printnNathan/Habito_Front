@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { removerToken } from '../../storage/tokenStorage';
+import { styles } from './HomeScreen.styles';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen({ navigation }: any) {
   async function handleLogout() {
@@ -9,31 +11,14 @@ export default function HomeScreen({ navigation }: any) {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login realizado com sucesso 🎉</Text>
-      <Text style={styles.subtitle}>Essa é a HomeScreen de teste.</Text>
-      <Button title="Sair" onPress={handleLogout} />
-    </View>
+    <LinearGradient
+      colors={['#39E58C', '#151D1B']}
+      start={{ x: 4, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      <Text style={styles.title}>Olá</Text>
+      <Text style={styles.subtitle}>Meu app</Text>
+    </LinearGradient>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-});
