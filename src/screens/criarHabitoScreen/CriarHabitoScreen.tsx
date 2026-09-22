@@ -45,10 +45,10 @@ export default function NovoHabitoScreen() {
 
       setNome('');
     } catch (error: any) {
-  console.log('Status:', error.response?.status);
-  console.log('Data:', error.response?.data);
-  console.log('Message:', error.message);
-  Alert.alert('Erro', 'Não foi possível criar o hábito.');
+        console.log('Status:', error.response?.status);
+        console.log('Data:', error.response?.data);
+        console.log('Message:', error.message);
+        Alert.alert('Erro', 'Não foi possível criar o hábito.');
     } finally {
       setLoading(false);
     }

@@ -8,3 +8,15 @@ export async function criarHabito(dados: any) {
 
   return response.data;
 }
+
+export interface Habito{
+  id: string;
+  nome: string;
+  data_ativacao: string;
+  fkUsuario: string;
+}
+
+export async function listarHabitos(): Promise<Habito[]> {
+  const response = await api.get<Habito[]>('/api/habito');
+  return response.data;
+}
