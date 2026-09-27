@@ -65,14 +65,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
-
-  habitoCard: {
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-  },
-
+  
   habitoNome: {
     color: '#fff',
     fontWeight: 'bold',
@@ -82,5 +75,44 @@ export const styles = StyleSheet.create({
   habitoData: {
     color: '#ccc',
     marginTop: 4,
+  },
+  habitoCard: {
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  habitoInfo: {
+    flex: 1,
+    marginLeft: 12,
+  },
+
+  checkbox: {
+    width: 24,
+    height: 24,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  checkboxMarcado: {
+    backgroundColor: COLORS.primary,
+    borderColor: COLORS.primary,
+  },
+
+  checkboxIcone: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+
+  habitoNomeConcluido: {
+    textDecorationLine: 'line-through',
+    color: '#888',
   },
 });

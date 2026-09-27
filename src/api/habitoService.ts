@@ -14,9 +14,18 @@ export interface Habito{
   nome: string;
   data_ativacao: string;
   fkUsuario: string;
+  concluidoHoje: boolean;
 }
 
 export async function listarHabitos(): Promise<Habito[]> {
   const response = await api.get<Habito[]>('/api/habito');
   return response.data;
+}
+
+export async function marcarHabitoCompleto(habitoId: string): Promise<void> {
+  await api.post(`/api/habito/${habitoId}/completo`);
+}
+
+export async function desmarcarHabitoCompleto(habitoId: string): Promise<void> {
+  await api.delete(`/api/habito/${habitoId}/completo`);
 }

@@ -4,7 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { removerToken } from '../../storage/tokenStorage';
-import { listarHabitos, Habito } from '../../api/habitoService';
+import {
+  listarHabitos,
+  marcarHabitoCompleto,
+  desmarcarHabitoCompleto,
+  Habito,
+} from '../../api/habitoService';
 import { COLORS, styles } from './HomeScreen.styles';
 
 export default function HomeScreen({ navigation }: any) {
@@ -46,6 +51,38 @@ export default function HomeScreen({ navigation }: any) {
     navigation.navigate('CriarHabito');
   }
 
+  async function handleToggleConcluido(habito: Habito) {
+    const concluidoAnterior = habito.concluidoHoje;
+
+    // Atualização otimista: muda a UI antes da resposta do servidor
+    setHabitos((prev) =>
+      prev.map((h) =>
+        h.id === habito.id ? { ...h, concluidoHoje: !concluidoAnterior } : h
+      )
+    );
+
+    try {
+      if (concluidoAnterior) {
+        await desmarcarHabitoCompleto(habito.id);
+      } else {
+        await marcarHabitoCompleto(habito.id);
+      }
+    } catch (error: any) {
+      console.log('Erro ao alternar conclusão:', error.response?.status, error.response?.data);
+      // Reverte em caso de erro
+      setHabitos((prev) =>
+        prev.map((h) =>
+          h.id === habito.id ? { ...h, concluidoHoje: concluidoAnterior } : h
+        )
+      );
+    }
+  }
+
+  const habitosOrdenados = [...habitos].sort((a, b) => {
+    if (a.concluidoHoje === b.concluidoHoje) return 0;
+    return a.concluidoHoje ? 1 : -1;
+  });
+
   return (
     <LinearGradient
       colors={[COLORS.primary, '#1c2e28']}
@@ -60,7 +97,7 @@ export default function HomeScreen({ navigation }: any) {
         <ActivityIndicator color="#fff" style={styles.loader} />
       ) : (
         <FlatList
-          data={habitos}
+          data={habitosOrdenados}
           keyExtractor={(item) => item.id}
           style={styles.listaHabitos}
           contentContainerStyle={styles.listaHabitosContent}
@@ -72,8 +109,19 @@ export default function HomeScreen({ navigation }: any) {
           }
           renderItem={({ item }) => (
             <View style={styles.habitoCard}>
-              <Text style={styles.habitoNome}>{item.nome}</Text>
-              <Text style={styles.habitoData}>Ativo desde {item.data_ativacao}</Text>
+              <TouchableOpacity
+                style={[styles.checkbox, item.concluidoHoje && styles.checkboxMarcado]}
+                onPress={() => handleToggleConcluido(item)}
+              >
+                {item.concluidoHoje && <Text style={styles.checkboxIcone}>✓</Text>}
+              </TouchableOpacity>
+
+              <View style={styles.habitoInfo}>
+                <Text style={[styles.habitoNome, item.concluidoHoje && styles.habitoNomeConcluido]}>
+                  {item.nome}
+                </Text>
+                <Text style={styles.habitoData}>Ativo desde {item.data_ativacao}</Text>
+              </View>
             </View>
           )}
         />
