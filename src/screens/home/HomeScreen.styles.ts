@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const COLORS = {
-  primary: '#7c7676',
-  secondary: '#fcf9f9',
-  background: '#f3f1f1',
-  text: '#f8f4f4',
+  primary: '#9c8080',
+  secondary: '#ffffff',
+  background: '#ffffff',
+  text: '#ffffff',
 };
 
 export const styles = StyleSheet.create({
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
 
   addButtonText: {
     fontSize: 32,
-    color: '#151D1B',
+    color: '#0a0a0a',
     fontWeight: 'bold',
   },
 
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
 
   listaHabitos: {
     width: '100%',
-    marginTop: 24,
+    marginTop: 250,
   },
 
   listaHabitosContent: {
@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
-  
+
   habitoNome: {
     color: '#fff',
     fontWeight: 'bold',
@@ -113,6 +113,6 @@ export const styles = StyleSheet.create({
 
   habitoNomeConcluido: {
     textDecorationLine: 'line-through',
-    color: '#888',
+    color: '#1a1919',
   },
 });
