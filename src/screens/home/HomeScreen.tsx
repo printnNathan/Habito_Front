@@ -12,11 +12,13 @@ import {
 import { COLORS, styles } from './HomeScreen.styles';
 import ResumoDiaCard from '../../components/resumoDiaCard/ResumoDiaCard';
 import Svg, { Circle } from 'react-native-svg';
+import { formatarDataHoje, gerarSaudacao } from '../../utils/dataSaudacao'
 
 export default function HomeScreen({ navigation }: any) {
   const [habitos, setHabitos] = useState<Habito[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [nomeUsuario, setNomeUsuario] = useState('');
 
   async function carregarHabitos() {
     try {
@@ -97,8 +99,13 @@ const concluidos = habitos.filter((h) => h.concluidoHoje).length;
       end={{ x: 1, y: 1 }}
       style={styles.container}
     >
-      <Text style={styles.title}>olá, seja bem-vindo!</Text>
-      <Text style={styles.subtitle}>Meu app</Text>
+
+      <Text style={styles.data}>{formatarDataHoje()}</Text>
+
+      <Text style={styles.saudacao}>
+        {gerarSaudacao()}
+        {nomeUsuario ? `, ${nomeUsuario}` : ''}
+      </Text>
 
       {loading ? (
         <ActivityIndicator color="#fff" style={styles.loader} />

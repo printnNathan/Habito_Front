@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const COLORS = {
-  primary: '#9c8080',
+  primary: '#353333',
   secondary: '#ffffff',
   background: '#ffffff',
   text: '#ffffff',
@@ -20,11 +20,12 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
     textAlign: 'center',
+    color: '#fff',
   },
 
   subtitle: {
     fontSize: 14,
-    color: '#78c796c5',
+    color: '#fdfdfd',
     marginBottom: 24,
     textAlign: 'center',
   },
@@ -42,7 +43,7 @@ export const styles = StyleSheet.create({
 
   addButtonText: {
     fontSize: 32,
-    color: '#0a0a0a',
+    color: '#fafafa',
     fontWeight: 'bold',
   },
 
@@ -77,7 +78,7 @@ export const styles = StyleSheet.create({
     marginTop: 4,
   },
   habitoCard: {
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(245, 240, 240, 0.08)',
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
@@ -115,4 +116,20 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: '#1a1919',
   },
+
+  data: {
+  color: 'rgba(255,255,255,0.6)',
+  fontSize: 14,
+  textTransform: 'capitalize',
+  marginBottom: 4,
+  alignSelf: 'flex-start',
+},
+saudacao: {
+  color: '#FFFFFF',
+  fontSize: 28,
+  fontWeight: '700',
+  marginBottom: 20,
+  alignSelf: 'flex-start',
+
+},
 });

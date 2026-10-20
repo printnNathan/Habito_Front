@@ -112,7 +112,7 @@ export default function NovoHabitoScreen() {
         }}
       >
         {loading ? (
-          <ActivityIndicator color="#000" />
+          <ActivityIndicator color="#b62b2b" />
         ) : (
           <Text style={{ fontWeight: 'bold' }}>Criar Hábito</Text>
         )}
