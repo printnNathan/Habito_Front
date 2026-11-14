@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-// Constantes do anel ficam aqui para o componente e o estilo usarem os mesmos valores
 export const RING = {
   size: 96,
   stroke: 10,

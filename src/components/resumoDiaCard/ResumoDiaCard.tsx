@@ -4,7 +4,6 @@ import Svg, { Circle } from 'react-native-svg';
 
 import { RING, styles } from './ResumoDiaCard.styles';
 
-// O Circle do SVG não é animável por padrão; esta versão aceita valores Animated nas props
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const DURACAO_MS = 600;
@@ -34,24 +33,21 @@ export default function ResumoDiaCard({ total, concluidos }: Props) {
   const raio = (size - stroke) / 2;
   const circunferencia = 2 * Math.PI * raio;
 
-  // Guarda contra divisão por zero quando não há hábitos
   const progresso = total > 0 ? concluidos / total : 0;
 
-  // Valor animado de 0 a 1 (fração do anel preenchida)
   const animado = useRef(new Animated.Value(0)).current;
   const [percentual, setPercentual] = useState(0);
 
-  // Sempre que o progresso muda, anima do valor atual até o novo
   useEffect(() => {
     Animated.timing(animado, {
       toValue: progresso,
       duration: DURACAO_MS,
-      easing: Easing.out(Easing.cubic), // começa rápido e desacelera no final
-      useNativeDriver: false, // props de SVG não rodam no driver nativo
+      easing: Easing.out(Easing.cubic), 
+      useNativeDriver: false, 
     }).start();
   }, [progresso, animado]);
 
-  // Faz o número do centro acompanhar o anel enquanto ele enche
+
   useEffect(() => {
     const id = animado.addListener(({ value }) => {
       setPercentual(Math.round(value * 100));
@@ -59,7 +55,6 @@ export default function ResumoDiaCard({ total, concluidos }: Props) {
     return () => animado.removeListener(id);
   }, [animado]);
 
-  // 0 => anel vazio (offset = circunferência); 1 => anel cheio (offset = 0)
   const offset = animado.interpolate({
     inputRange: [0, 1],
     outputRange: [circunferencia, 0],
@@ -78,7 +73,7 @@ export default function ResumoDiaCard({ total, concluidos }: Props) {
             strokeWidth={stroke}
             fill="none"
           />
-          {/* Arco de progresso, girado -90° para começar no topo */}
+          
           <AnimatedCircle
             cx={size / 2}
             cy={size / 2}

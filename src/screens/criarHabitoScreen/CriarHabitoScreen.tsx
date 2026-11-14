@@ -15,7 +15,6 @@ export default function NovoHabitoScreen() {
   const [dataAtivacao, setDataAtivacao] = useState('2026-07-19');
   const [loading, setLoading] = useState(false);
 
-  // Depois vamos pegar esse id do AuthContext
   const usuarioId = 'b74a07f2-9041-4eaa-8bd7-c2a74b8b4758';
 
   async function salvar() {
