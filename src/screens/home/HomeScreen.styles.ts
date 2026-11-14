@@ -1,135 +1,36 @@
 import { StyleSheet } from 'react-native';
 
-export const COLORS = {
-  primary: '#353333',
-  secondary: '#ffffff',
-  background: '#ffffff',
-  text: '#ffffff',
-};
-
+export const COLORS = { primary: '#79D9AE', secondary: '#FFFFFF', background: '#111513', text: '#F5F7F5' };
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    textAlign: 'center',
-    color: '#fff',
-  },
-
-  subtitle: {
-    fontSize: 14,
-    color: '#fdfdfd',
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-
-  addButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-
-    backgroundColor: COLORS.primary,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  addButtonText: {
-    fontSize: 32,
-    color: '#fafafa',
-    fontWeight: 'bold',
-  },
-
-  loader: {
-    marginTop: 24,
-  },
-
-  listaHabitos: {
-    width: '100%',
-    marginTop: 250,
-  },
-
-  listaHabitosContent: {
-    paddingHorizontal: 4,
-    paddingBottom: 100,
-  },
-
-  emptyText: {
-    color: '#ccc',
-    textAlign: 'center',
-    marginTop: 20,
-  },
-
-  habitoNome: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-
-  habitoData: {
-    color: '#ccc',
-    marginTop: 4,
-  },
-  habitoCard: {
-    backgroundColor: 'rgba(245, 240, 240, 0.08)',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  habitoInfo: {
-    flex: 1,
-    marginLeft: 12,
-  },
-
-  checkbox: {
-    width: 24,
-    height: 24,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#ccc',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  checkboxMarcado: {
-    backgroundColor: COLORS.primary,
-    borderColor: COLORS.primary,
-  },
-
-  checkboxIcone: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-
-  habitoNomeConcluido: {
-    textDecorationLine: 'line-through',
-    color: '#1a1919',
-  },
-
-  data: {
-  color: 'rgba(255,255,255,0.6)',
-  fontSize: 14,
-  textTransform: 'capitalize',
-  marginBottom: 4,
-  alignSelf: 'flex-start',
-},
-saudacao: {
-  color: '#FFFFFF',
-  fontSize: 28,
-  fontWeight: '700',
-  marginBottom: 20,
-  alignSelf: 'flex-start',
-
-},
+  container: { flex: 1, backgroundColor: COLORS.background },
+  header: { paddingHorizontal: 22, paddingTop: 18, paddingBottom: 12 },
+  data: { color: '#A9B3AD', fontSize: 11, fontWeight: '700', letterSpacing: 1.2, marginBottom: 8 },
+  saudacao: { color: '#F5F7F5', fontSize: 30, fontWeight: '700' },
+  loader: { marginTop: 50 },
+  listaHabitos: { flex: 1, width: '100%' },
+  listaHabitosContent: { paddingHorizontal: 20, paddingBottom: 24 },
+  sectionTitle: { color: '#F5F7F5', fontSize: 20, fontWeight: '700', marginTop: 26, marginBottom: 14 },
+  emptyText: { color: '#A9B3AD', textAlign: 'center', marginVertical: 24, lineHeight: 22 },
+  habitoNome: { color: '#F5F7F5', fontWeight: '600', fontSize: 16 },
+  habitoData: { color: '#909B94', marginTop: 5, fontSize: 13 },
+  habitoCard: { backgroundColor: '#1B211E', borderColor: '#29312C', borderWidth: 1, borderRadius: 18, padding: 16, marginBottom: 10, flexDirection: 'row', alignItems: 'center' },
+  habitoInfo: { flex: 1, marginLeft: 13 },
+  checkbox: { width: 25, height: 25, borderRadius: 8, borderWidth: 1.5, borderColor: '#758079', justifyContent: 'center', alignItems: 'center' },
+  checkboxMarcado: { backgroundColor: COLORS.primary, borderColor: COLORS.primary },
+  checkboxIcone: { color: '#12221B', fontSize: 15, fontWeight: '800' },
+  habitoNomeConcluido: { textDecorationLine: 'line-through', color: '#828B85' },
+  nextCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#1B211E', borderRadius: 16, padding: 15, marginBottom: 9 },
+  nextTime: { color: COLORS.primary, fontWeight: '700', fontSize: 14, width: 58 },
+  nextName: { color: '#F5F7F5', fontSize: 15, fontWeight: '500' },
+  addButton: { width: 52, height: 52, borderRadius: 26, backgroundColor: COLORS.primary, justifyContent: 'center', alignItems: 'center', marginTop: -20, shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 8, elevation: 5 },
+  addButtonText: { fontSize: 31, color: '#12221B', fontWeight: '500', lineHeight: 36 },
+  tabBar: { minHeight: 74, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingHorizontal: 8, paddingBottom: 8, backgroundColor: '#151A17', borderTopWidth: 1, borderTopColor: '#29312C' },
+  tabItem: { flex: 1, alignItems: 'center', justifyContent: 'center', height: 54 },
+  tabText: { color: '#858F89', fontSize: 11, fontWeight: '600' },
+  tabTextActive: { color: COLORS.primary },
+  placeholder: { flex: 1, backgroundColor: COLORS.background, alignItems: 'center', justifyContent: 'center' },
+  placeholderTitle: { color: '#F5F7F5', fontSize: 30, fontWeight: '700' },
+  placeholderText: { color: '#A9B3AD', fontSize: 16, marginTop: 10 },
+  logout: { alignSelf: 'center', padding: 16, marginTop: 18 },
+  logoutText: { color: '#A9B3AD', fontSize: 13 },
 });

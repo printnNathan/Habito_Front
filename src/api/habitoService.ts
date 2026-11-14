@@ -1,19 +1,28 @@
 import { api } from './client';
 
-export async function criarHabito(dados: any) {
-  console.log('URL:', api.defaults.baseURL + '/api/habito');
-  console.log('Authorization:', api.defaults.headers.common.Authorization);
-
- const response = await api.post('/api/habito', dados);
-
-  return response.data;
+export interface CriarHabitoRequest {
+  nome: string;
+  descricao: string | null;
+  diasSemana: number[];
+  horarioInicio: string | null;
+  horarioFim: string | null;
+  dataInicio: string;
+  dataFim: string | null;
+  horarioLembrete: string | null;
 }
 
-export interface Habito{
+export async function criarHabito(dados: CriarHabitoRequest): Promise<void> {
+  await api.post('/api/habito', dados);
+}
+
+export interface Habito {
   id: string;
   nome: string;
-  data_ativacao: string;
-  fkUsuario: string;
+  descricao?: string | null;
+  data_ativacao?: string;
+  dataInicio?: string;
+  horarioInicio?: string | null;
+  fkUsuario?: string;
   concluidoHoje: boolean;
 }
 
